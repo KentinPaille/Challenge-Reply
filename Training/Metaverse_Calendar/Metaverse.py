@@ -8,8 +8,6 @@ for z in range(int(input())):
                 a[j][k] = 1
             elif k % list[j] == 0:
                 a[j][k] = 1
-            else:
-                a[j][k] = 0
     max = 0
     for i in range(nb_day):
         count = 0
