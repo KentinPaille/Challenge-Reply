@@ -1,0 +1,61 @@
+
+from copy import deepcopy
+
+total_res = []
+for u in range(int(input())):
+    lenght , nb_cars = map(int, input().split())
+    remainder = lenght
+    car = []
+    standard = []
+    res = []
+    for j in range(nb_cars):
+        car.append(list(map(int, input().split())))
+        standard = deepcopy(car)
+        res.append(0)
+
+    for i in car:
+        # print("\n\n\n")
+        while lenght > 0:
+            passe = 0
+            res[car.index(i)] += 1
+
+            
+
+            if standard[car.index(i)][4] > 0:
+                lenght -= i[2]
+                passe = 1
+                standard[car.index(i)][4] -= 1
+                if standard[car.index(i)][4] == 0:
+                    standard[car.index(i)][3] = 0
+
+            elif standard[car.index(i)][3] == i[3] and standard[car.index(i)][4] == 0:
+                standard[car.index(i)][4] = i[4]
+                lenght -= i[2]
+                passe = 1
+                standard[car.index(i)][4] -= 1
+                if standard[car.index(i)][4] == 0:
+                    standard[car.index(i)][3] = 0
+
+    
+            elif standard[car.index(i)][4] == 0:
+                standard[car.index(i)][3] += 1
+
+            
+            
+
+            if passe == 0:
+                lenght -= i[1]
+            # print (i, end=" ")
+            # print (standard[car.index(i)], end=" ")
+            
+            # print(remainder - lenght)
+            
+
+        lenght = remainder
+
+    # print(res)
+    index = res.index(min(res))
+    total_res.append(index)
+
+for u in range(len(total_res)):
+    print ("Case #" + str(u + 1) + ": " + str(total_res[u]))

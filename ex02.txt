@@ -1,0 +1,20 @@
+for u in range(int(input())):
+    nb_slot, f_budget, i_budget = map(int, input().split())
+    game_slot = []
+    for i in range(nb_slot):
+        game_slot.append(list(map(int, input().split())))
+
+    roi = []
+    for i in range(nb_slot):
+        roi.append(game_slot[i][1] - game_slot[i][0] )
+    turn = 0
+    while (i_budget < f_budget):
+        mult = 0
+        turn += 1
+        for i in range(nb_slot):
+            if roi[i] >= mult and game_slot[i][0] <= i_budget:
+                mult = roi[i]
+                index = i
+        i_budget += game_slot[index][1] - game_slot[index][0]
+
+    print("Case #" + str(u + 1) + ": " + str(turn))

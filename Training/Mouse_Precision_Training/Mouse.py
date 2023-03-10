@@ -21,8 +21,7 @@ for u in range(int(input())):
             pos[0] = x
             pos[1] = y
         maps[x][y] = z
-    # find the nearest target from the current position and go to it
-    # until there is no more target
+
     for i in range(witdh):
             print(maps[i])
     print(pos, last_pos, last_dist)
